@@ -1,0 +1,21 @@
+create table requests (
+	id serial primary key,
+	theType text not null,
+	description text not null,
+	amount int not null
+);
+
+create table statuses (
+	id serial primary key,
+	status text not null,
+	status_id int references requests(id)
+);
+
+insert into requests (theType, description, amount) values
+('Lodging', 'Business trip', 100);
+
+insert into statuses (status_id, status) values
+(1, 'Accepted');
+
+select * from requests;
+select * from statuses;
